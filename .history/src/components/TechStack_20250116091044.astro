@@ -1,0 +1,57 @@
+---
+const technologies = [
+	{ name: "JavaScript", icon: "⚡" },
+	{ name: "TypeScript", icon: "📘" },
+	{ name: "React", icon: "⚛️" },
+	{ name: "Node.js", icon: "🟢" },
+	{ name: "Python", icon: "🐍" },
+	{ name: "AWS", icon: "☁️" },
+	{ name: "Docker", icon: "🐳" },
+	{ name: "PostgreSQL", icon: "🐘" },
+];
+---
+
+<div class="tech-grid">
+	{
+		technologies.map((tech) => (
+			<div class="tech-item">
+				<span class="name">{tech.name}</span>
+			</div>
+		))
+	}
+</div>
+
+<style>
+	.tech-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: 1rem;
+	}
+
+	.tech-item {
+		background: var(--secondary);
+		border-radius: 12px;
+		padding: 1.25rem;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		gap: 0.75rem;
+		transition: all 0.3s ease;
+		border: 2px solid var(--border);
+	}
+
+	.tech-item:hover {
+		transform: translateY(-2px);
+		border-color: rgb(var(--accent));
+	}
+
+	.icon {
+		font-size: 1.5rem;
+	}
+
+	.name {
+		color: var(--foreground);
+		font-size: 1rem;
+		font-weight: 500;
+	}
+</style>

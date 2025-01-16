@@ -1,0 +1,96 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Footer from "../../components/Footer.astro";
+---
+
+<Layout title="Blog | Victor Mendes">
+  <main class="container main">
+    <section class="blog-header">
+      <a href="/" class="back">
+        ← Back
+      </a>
+      <h1>Blogroll</h1>
+      <p class="text-left">The super centralised internet of today, with their big social medias and doom scrolling is not very good. I think that the internet should be healthy and a good place to spend your time. 
+        <br>
+        <br>
+        I do my own contribution to that idea in my <a href="/blog">writings</a>, but there are incredible people doing the same, here's a list of some that I like:</p>
+    </section>
+
+    <ul>
+        <li class="list-item"><a href="/">somelink</a> - text</li>
+        <li class="list-item"><a href="/">somelink</a> - text</li>
+        <li class="list-item"><a href="/">somelink</a> - text</li>
+        <li class="list-item"><a href="/">somelink</a> - text</li>
+        <li class="list-item"><a href="/">somelink</a> - text</li>
+        <li class="list-item"><a href="/">somelink</a> - text</li>
+        <li class="list-item"><a href="/">somelink</a> - text</li>
+    </ul>
+
+
+    <Footer />
+  </main>
+</Layout>
+
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .blog-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .list-item {
+    padding-bottom: 0.875rem;
+    padding-left: 0.125rem;
+  }
+
+  .blog-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .blog-header p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+  }
+
+  .back {
+    color: rgb(var(--accent-light));
+    margin-bottom: 40px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+  }
+  
+
+  .back:hover {
+    transform: translateX(-4px);
+  }
+
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .read-more:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .main :global(a:hover) {
+    color: rgb(var(--accent-light));
+  }
+</style>

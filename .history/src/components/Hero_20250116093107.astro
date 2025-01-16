@@ -1,0 +1,69 @@
+---
+
+---
+
+<section class="hero">
+	<canvas id="particles"></canvas>
+	<div class="lightbulb-effect"></div> <!-- Added lightbulb effect -->
+	<div class="content">
+		<div class="badge">Available for hire</div>
+		<h1>Hi, I'm <span class="typing-text"></span></h1>
+		<p class="title">Software Engineer</p>
+		<p class="subtitle">
+			Building exceptional digital experiences with modern web technologies
+		</p>
+		<div class="cta-buttons">
+			<a href="#projects" class="primary-button">View Projects</a>
+			<a href="#contact" class="secondary-button">Get in Touch</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	/* Lightbulb Effect Styles */
+	.lightbulb-effect {
+		position: absolute;
+		top: 15%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 200px;
+		height: 200px;
+		background: radial-gradient(
+			circle,
+			rgba(0, 123, 255, 0.6) 0%,
+			rgba(0, 123, 255, 0.3) 50%,
+			transparent 100%
+		);
+		border-radius: 50%;
+		filter: blur(30px);
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	.hero {
+		min-height: 90vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 2rem;
+		position: relative;
+		overflow: hidden;
+	}
+
+	canvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.content {
+		max-width: 800px;
+		position: relative;
+		z-index: 2;
+	}
+</style>

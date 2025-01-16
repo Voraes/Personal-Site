@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 5);
+---
+
+<div class="latest-posts">
+  {posts.map(post => (
+    <a href={`/blog/${post.slug}`} class="post-link">
+      <span class="post-date">{post.data.date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })}</span>
+      <span class="post-title">{post.data.title}</span>
+      <span class="arrow">→</span>
+    </a>
+  ))}
+  <a href="/blog" class="view-all">
+    View all posts <span class="arrow">→</span>
+  </a>
+</div>
+
+<style>
+  .latest-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .post-link {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .post-link:hover {
+    background: var(--secondary);
+    border-color: rgb(var(--accent));
+  }
+
+  .post-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .post-title {
+    color: var(--foreground);
+    font-weight: 500;
+  }
+
+  .arrow {
+    color: rgb(var(--accent-light));
+    transition: transform 0.3s ease;
+  }
+
+  .post-link:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .view-all {
+    margin-top: 1rem;
+    text-align: center;
+    color: rgb(var(--accent-light));
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .view-all:hover {
+    background: var(--secondary);
+  }
+
+  .view-all:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    .post-link {
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+    }
+
+    .post-date {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

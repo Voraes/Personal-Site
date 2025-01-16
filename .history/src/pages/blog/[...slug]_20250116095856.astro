@@ -1,0 +1,155 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("blog");
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = post.data.date.toLocaleDateString("en-US", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+});
+---
+
+<Layout title={`${post.data.title} | Victor Mendes`}>
+  <main class="container">
+    <article class="post">
+      <header class="post-header">
+        <div class="post-date">{formattedDate}</div>
+        <h1>{post.data.title}</h1>
+        {post.data.tags && (
+          <div class="tags">
+            {post.data.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        )}
+      </header>
+      <div class="post-content">
+        <Content />
+      </div>
+      <footer class="post-footer">
+        <a href="/blog" class="back-link">
+          ← Back to all posts
+        </a>
+      </footer>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+
+  .post-header {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .post-date {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background: rgba(var(--accent), 0.1);
+    color: rgb(var(--accent-light));
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .post-content {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .post-content :global(h1) {
+    font-size: 2rem;
+    margin: 2.5rem 0 1.5rem;
+    color: var(--foreground);
+  }
+
+  .post-content :global(h2) {
+    font-size: 1.875rem;
+    margin: 2.5rem 0 1.5rem;
+    color: var(--foreground);
+  }
+
+  .post-content :global(h3) {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    color: var(--foreground);
+  }
+
+  .post-content :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .post-content :global(ul), .post-content :global(ol) {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .post-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .post-content :global(a) {
+    color: rgb(var(--accent-light));
+    text-decoration: underline;
+    font-size: 1.125rem;
+    transition: color 0.3s ease;
+  }
+
+  .post-content :global(a:hover) {
+    transform: translateX(-4px);
+  }
+
+  .post-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .back-link {
+    color: rgb(var(--accent-light));
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+  }
+
+  .back-link:hover {
+    transform: translateX(-4px);
+  }
+</style>

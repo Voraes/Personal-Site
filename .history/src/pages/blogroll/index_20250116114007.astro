@@ -1,0 +1,115 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Footer from "../../components/Footer.astro";
+---
+
+<Layout title="Blog | Victor Mendes">
+  <main class="container">
+    <section class="blog-header">
+      <a href="/" class="back">
+        ← Back
+      </a>
+      <h1>Blogroll</h1>
+      <p>I don't like the super centralised internet of today, with their big social medias and doom scrolling. I think that the internet should be healthy and a good way to spend your time. I do my own contribution to that idea in my <a href="/blog">writings</a></p>
+    </section>
+
+
+    <Footer />
+  </main>
+</Layout>
+
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .blog-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .blog-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .blog-header p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .post-card {
+    background: var(--secondary);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 2px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .post-card:hover {
+    transform: translateY(-4px);
+    border-color: rgb(var(--accent));
+  }
+
+  .post-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .post-card h2 a {
+    color: var(--foreground);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .post-card h2 a:hover {
+    color: rgb(var(--accent-light));
+  }
+
+  .post-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .back {
+    color: rgb(var(--accent-light));
+    margin-bottom: 40px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+  }
+
+  .back:hover {
+    transform: translateX(-4px);
+  }
+
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .read-more:hover .arrow {
+    transform: translateX(4px);
+  }
+</style>

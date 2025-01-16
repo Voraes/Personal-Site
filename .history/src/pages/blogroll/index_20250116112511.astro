@@ -1,0 +1,52 @@
+
+<main class="main">
+    <div class="footer-content">
+        <span>© 2025 All rights reserved - Voraes</span>
+
+        <div class="footer-links">
+            <a href="/blog">Blog</a>
+            <a href="/rss">RSS</a>
+            <a href="/blogroll">Blogroll</a>
+            <a href="https://github.com/voraes">Github</a>
+            <a href="https://www.linkedin.com/in/victor-moraes-mendes/">Linkedin</a>
+            <a href="" onclick="window.location.href='mailto:victor.inscriptio@gmail.com?subject=Hello'">Email</a>
+        </div>
+    </div>
+</main>
+
+<style>
+
+    
+.main {
+    padding: 2rem 0;
+    background: var(--background);
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    bottom: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: 20px;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--foreground);
+}
+</style>

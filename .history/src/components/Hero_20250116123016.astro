@@ -1,0 +1,182 @@
+---
+---
+
+<section class="hero">
+	<canvas id="particles"></canvas>
+	<div class="content">
+		<div class="badge">Available for hire</div>
+		<h1>Hello there, I'm <span class="typing-text"></span></h1>
+		<p class="title">Software Engineer and Life Enthusiast</p>
+		<p class="subtitle">I'm a passionate software engineer with expertise in building scalable web applications. With 5+ years of experience in full-stack development, I focus on creating efficient, maintainable, and user-friendly solutions that solve real-world problems.</p>
+		<div class="cta-buttons">
+			<a href="/blog" class="primary-button">View Posts</a>
+			<a href="" class="secondary-button" onclick="window.location.href='mailto:victor.inscriptio@gmail.com?subject=Hello'">Get in Touch</a>
+		</div>
+	</div>
+</section>
+
+<script>
+	const text = "Victor";
+	const typingText = document.querySelector('.typing-text');
+	let i = 0;
+
+	function type() {
+		if (i < text.length) {
+			typingText.textContent += text.charAt(i);
+			i++;
+			setTimeout(type, 100);
+		}
+	}
+
+	// Start typing animation when the page loads
+	window.addEventListener('load', () => {
+		typingText.textContent = '';
+		i = 0;
+		setTimeout(type, 500);
+	});
+
+	
+</script>
+
+<style>
+	.hero {
+		min-height: 90vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 2rem;
+		position: relative;
+		overflow: hidden;
+	}
+
+	canvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.content {
+		max-width: 800px;
+		position: relative;
+		z-index: 1;
+	}
+
+	.badge {
+		background: rgba(var(--accent), 0.1);
+		color: rgb(var(--accent-light));
+		padding: 0.5rem 1rem;
+		border-radius: 20px;
+		font-size: 0.875rem;
+		font-weight: 500;
+		display: inline-block;
+		margin-bottom: 2rem;
+		border: 2px solid rgba(var(--accent), 0.2);
+	}
+
+	h1 {
+		font-size: 4.5rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		line-height: 1.1;
+	}
+
+	.typing-text {
+		background: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 150%;
+		position: relative;
+	}
+
+	.typing-text::after {
+		content: '|';
+		margin-left: 2px;
+		opacity: 1;
+		animation: blink 1s infinite;
+	}
+
+	@keyframes blink {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0; }
+	}
+
+	.title {
+		font-size: 2rem;
+		color: rgb(var(--accent-light));
+		margin-bottom: 1rem;
+		font-weight: 600;
+	}
+
+	.subtitle {
+		font-size: 1.25rem;
+		color: var(--text-secondary);
+		margin-bottom: 2.5rem;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+	}
+
+	.primary-button, .secondary-button {
+		padding: 1rem 2rem;
+		border-radius: 12px;
+		text-decoration: none;
+		font-weight: 500;
+		transition: all 0.3s ease;
+		font-size: 1.125rem;
+	}
+
+	.primary-button {
+		background: rgb(var(--accent));
+		color: white;
+	}
+
+	.secondary-button {
+		background: var(--secondary);
+		color: var(--foreground);
+		border: 2px solid var(--border);
+	}
+
+	.primary-button:hover {
+		transform: translateY(-2px);
+		background: rgb(var(--accent-light));
+	}
+
+	.secondary-button:hover {
+		transform: translateY(-2px);
+		border-color: rgb(var(--accent));
+	}
+
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 3rem;
+		}
+
+		.title {
+			font-size: 1.5rem;
+		}
+
+		.subtitle {
+			font-size: 1rem;
+		}
+
+		.cta-buttons {
+			flex-direction: column;
+		}
+
+		.primary-button, .secondary-button {
+			width: 100%;
+			text-align: center;
+		}
+	}
+</style>

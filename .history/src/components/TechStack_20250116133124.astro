@@ -1,0 +1,60 @@
+---
+const technologies = [
+	"JavaScript",
+	"TypeScript",
+	"React",
+	"Next.js",
+	"Node.js",
+	"Express.js",
+	"Python",
+	"Java",
+	"Spring Boot",
+	"PostgreSQL",
+	"C#",
+	"AWS",
+	"AWS Bedrock",
+	"MongoDB",
+	"Docker",
+	"Git",
+];
+---
+
+<div class="tech-grid">
+	{
+		technologies.map((tech) => (
+			<div class="tech-item">
+				<span class="name">{tech}</span>
+			</div>
+		))
+	}
+</div>
+
+<style>
+	.tech-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+		gap: 1rem;
+	}
+
+	.tech-item {
+		background: var(--secondary);
+		border-radius: 12px;
+		padding: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.3s ease;
+		border: 2px solid var(--border);
+	}
+
+	.tech-item:hover {
+		transform: translateY(-2px);
+		border-color: rgb(var(--accent));
+	}
+
+	.name {
+		color: var(--foreground);
+		font-size: 1rem;
+		font-weight: 500;
+	}
+</style>

@@ -1,0 +1,239 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import TechStack from "../components/TechStack.astro";
+import Hero from "../components/Hero.astro";
+import LatestPosts from "../components/LatestPosts.astro";
+---
+
+<Layout title="Victor Mendes | Software Engineer">
+	<main>
+		<Hero />
+		
+		<div class="container">
+			<section id="about" class="section">
+				<div class="section-header">
+					<h2>About</h2>
+					<div class="section-line"></div>
+				</div>
+				<p class="section-content">
+					I'm a passionate software engineer with expertise in building scalable web applications.
+					With 5+ years of experience in full-stack development, I focus on creating efficient,
+					maintainable, and user-friendly solutions that solve real-world problems.
+				</p>
+			</section>
+
+			<section id="latest-writings" class="section">
+				<div class="section-header">
+					<h2>Latest Writings</h2>
+					<div class="section-line"></div>
+				</div>
+				<LatestPosts />
+			</section>
+
+			<section id="projects" class="section">
+				<div class="section-header">
+					<h2>Featured Projects</h2>
+					<div class="section-line"></div>
+				</div>
+				<div class="project-grid">
+					<ProjectCard
+						title="E-Commerce Platform"
+						description="A full-stack e-commerce solution built with Next.js and Node.js"
+						tags={['React', 'Node.js', 'PostgreSQL']}
+						github="https://github.com/username/project"
+						demo="https://demo-link.com"
+					/>
+					<ProjectCard
+						title="AI Chat Application"
+						description="Real-time chat application with AI-powered responses"
+						tags={['Python', 'TensorFlow', 'WebSocket']}
+						github="https://github.com/username/project"
+						demo="https://demo-link.com"
+					/>
+					<ProjectCard
+						title="Task Management System"
+						description="Collaborative task management tool for remote teams"
+						tags={['Vue.js', 'Firebase', 'Tailwind']}
+						github="https://github.com/username/project"
+						demo="https://demo-link.com"
+					/>
+				</div>
+			</section>
+
+			<section id="skills" class="section">
+				<div class="section-header">
+					<h2>Tech Stack</h2>
+					<div class="section-line"></div>
+				</div>
+				<TechStack />
+			</section>
+
+			<section id="contact" class="section">
+				<div class="section-header">
+					<h2>Contact</h2>
+					<div class="section-line"></div>
+				</div>
+				<div class="contact-links">
+					<a href="mailto:hello@example.com" class="contact-button">
+						<span class="contact-icon">
+							<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+								<polyline points="22,6 12,13 2,6"></polyline>
+							  </svg>
+						</span>
+						<span>Email</span>
+					</a>
+					<a href="https://github.com/username" class="contact-button">
+						<span class="contact-icon">🐙</span>
+						<span>GitHub</span>
+					</a>
+					<a href="https://linkedin.com/in/username" class="contact-button">
+						<span class="contact-icon">💼</span>
+						<span>LinkedIn</span>
+					</a>
+				</div>
+			</section>
+
+			<footer class="footer">
+				<div class="section-line"></div>
+				<div class="footer-content">
+					<span class="footer-left">© 2023 All rights reserved</span>
+					<div class="footer-links">
+						<a href="#">Privacy Policy</a>
+						<a href="#">Terms of Service</a>
+						<a href="#">Contact</a>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.container {
+		margin: 0 auto;
+		padding: 0 1.5rem;
+		max-width: 1200px;
+	}
+
+	.section {
+		margin: 8rem 0;
+	}
+
+	.section-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 3rem;
+	}
+
+	h2 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: var(--foreground);
+		white-space: nowrap;
+	}
+
+	.section-line {
+		height: 1px;
+		background: var(--border);
+		width: 100%;
+	}
+
+	.section-content {
+		font-size: 1.125rem;
+		line-height: 1.8;
+		color: var(--text-secondary);
+		max-width: 1000px;
+	}
+
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+
+	.contact-links {
+		display: flex;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    margin-top: 2rem;
+	}
+
+	.contact-button {
+		background: var(--secondary);
+    color: var(--foreground);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+	}
+
+	.contact-icon {
+		font-size: 1.25rem;
+	}
+
+	.contact-button:hover {
+		border-color: rgb(var(--accent));
+		transform: translateY(-2px);
+	}
+
+	@media (max-width: 768px) {
+		.section {
+			margin: 6rem 0;
+		}
+
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.contact-links {
+			flex-direction: column;
+		}
+
+		.contact-button {
+			width: 100%;
+			justify-content: center;
+		}
+	}
+
+	.footer {
+        padding: 2rem 0;
+        background: var(--background);
+        color: var(--text-secondary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .footer-left {
+        font-size: 1rem;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .footer-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--foreground);
+    }
+</style>

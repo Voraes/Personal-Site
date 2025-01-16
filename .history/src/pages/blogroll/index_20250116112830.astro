@@ -1,0 +1,84 @@
+---
+const blogrollLinks = [
+	{ name: "Blog 1", url: "https://blog1.com" },
+	{ name: "Blog 2", url: "https://blog2.com" },
+	{ name: "Blog 3", url: "https://blog3.com" },
+	{ name: "Blog 4", url: "https://blog4.com" },
+	{ name: "Blog 5", url: "https://blog5.com" },
+];
+---
+
+<main class="container">
+  <section class="section">
+    <div class="section-header">
+      <h2>Blogroll</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="section-content">
+      <ul class="blogroll-list">
+        {blogrollLinks.map(link => (
+          <li class="blogroll-item">
+            <a href={link.url} target="_blank" rel="noopener noreferrer">{link.name}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</main>
+
+<style>
+  .container {
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    max-width: 800px;
+  }
+
+  .section {
+    margin: 8rem 0;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--foreground);
+    white-space: nowrap;
+  }
+
+  .section-line {
+    height: 1px;
+    background: var(--border);
+    width: 100%;
+  }
+
+  .section-content {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .blogroll-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .blogroll-item {
+    margin-bottom: 1rem;
+  }
+
+  .blogroll-item a {
+    color: var(--foreground);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .blogroll-item a:hover {
+    color: var(--accent);
+  }
+</style>
