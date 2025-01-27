@@ -18,7 +18,6 @@ async function pagesGlobToRssItemsMod(globResult) {
 		items.push({
 			link: path.replace("../content", "").replace(".md", ""),
 			title: post.frontmatter.title,
-			description: post.frontmatter.description,
 			pubDate: post.frontmatter.date,
 		});
 	}
